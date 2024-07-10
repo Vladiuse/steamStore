@@ -4,6 +4,7 @@ from decimal import Decimal
 
 
 class PayMentSerializer(serializers.ModelSerializer):
+    """Сериализатов платежа"""
     link = serializers.HyperlinkedIdentityField(view_name='payment-detail')
     pay_link = serializers.HyperlinkedIdentityField(view_name='payment-pay', read_only=True)
     approved = serializers.HyperlinkedIdentityField(view_name='payment-approve', read_only=True)
@@ -13,8 +14,8 @@ class PayMentSerializer(serializers.ModelSerializer):
         model = Payment
         fields = '__all__'
 
-
     def to_representation(self, instance):
+        """Убрать лишние экшены изменения статуса в зависимости от статуса платежа"""
         repr = super().to_representation(instance)
         if instance.status == 'wait_pay':
             repr.pop('approved')
@@ -28,11 +29,10 @@ class PayMentSerializer(serializers.ModelSerializer):
         return repr
 
 
-
 class PayMentCreateSerializer(serializers.ModelSerializer):
+    """Сериализатор для создания платежа"""
     merchant_id = serializers.CharField()
     secret = serializers.CharField()
-
 
     class Meta:
         model = Payment
@@ -53,6 +53,7 @@ class PayMentCreateSerializer(serializers.ModelSerializer):
         return data
 
     def _check_merchant_exist(self, data):
+        """Проверка пользователя на наличие в бд"""
         merchant_id = data['merchant_id']
         secret = data['secret']
         try:
@@ -60,9 +61,11 @@ class PayMentCreateSerializer(serializers.ModelSerializer):
         except Merchants.DoesNotExist:
             raise serializers.ValidationError('Merchant not found')
 
+
 class PaymentLinkSerializer(serializers.ModelSerializer):
+    """Сериализатор платежа для ответа пользователю"""
     link = serializers.HyperlinkedIdentityField(view_name='payment-detail')
+
     class Meta:
         model = Payment
         fields = ('payment_id', 'amount', 'currency', 'link', 'expired')
-

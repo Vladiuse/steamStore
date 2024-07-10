@@ -11,12 +11,15 @@ class NicePay:
 
 
 class Merchants(models.Model):
-    """Пользователь"""
+    """Пользователь в платежной системе"""
     id = models.CharField(max_length=20, primary_key=True)
     secret = models.CharField(max_length=50, unique=True)
+    # TODO
+    # добавить ссылку на постюэк о статусе платежа
 
 
 class Payment(models.Model):
+    """Обьект платежа"""
     WAIT_PAY = 'wait_pay'
     PAYMENT_STATUSES = (
         (WAIT_PAY, WAIT_PAY),
@@ -45,20 +48,24 @@ class Payment(models.Model):
     expired = models.CharField(max_length=20, blank=True)
 
     def pay(self):
+        """Пометить платеж как оплаченый"""
         self.status = 'wait_approve'
         self.save()
 
     def approve(self):
+        """Пометить платеж как подтвержденный"""
         self.status = 'approved'
         self.save()
         self.send_payment_postback()
 
     def not_approve(self):
+        """Пометить платеж как откланенный"""
         self.status = 'not_approved'
         self.save()
         self.send_payment_postback()
 
     def send_payment_postback(self):
+        """Отплавить постбэк пользователю о изменении статуса заказа"""
         if self.status not in ('approved', 'not_approved'):
             raise ValueError('Cant send post back of not complete payment')
         result = 'success' if self.status == 'approved' else 'error'
