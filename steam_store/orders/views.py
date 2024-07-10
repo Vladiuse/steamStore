@@ -12,8 +12,9 @@ from rest_framework.decorators import action
 @api_view()
 def orders_root(request, format=None):
     return Response({
-        reverse('order-list', request=request, format=format)
+        'orders':reverse('order-list', request=request, format=format)
     })
+
 class OrderView(ModelViewSet):
     serializer_class = OrderSerializer
     queryset = Order.objects.all()

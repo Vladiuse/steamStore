@@ -8,7 +8,7 @@ def create_order():
         'phone_number': '123123123123',
         'order_items': [
             {'product': '10-usd', 'quantity': 10},
-            {'product': '20-usd', 'quantity': 500},
+            {'product': '20-usd', 'quantity': 5},
         ]
         # 'order_items': 1,
     }

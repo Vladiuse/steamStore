@@ -1,13 +1,22 @@
 from django.db import models
-from django.core.validators import MinValueValidator
 import requests as req
-import json
+
+
+USD = 'USD'
+RUB = 'RUB'
 
 
 class NicePay:
+    CURRENCY = USD
+    LIMITS = {
+        USD: {'min': 10, 'max': 990},
+        RUB: {'min': 200, 'max': 85000},
+    }
     MIN_ORDER_PRICE = 10
     MAX_ORDER_PRICE = 990
     PAY_URL = 'http://127.0.0.1:8000/nicepay/payment/'
+    MERCHANT_ID = 'vlad'
+    SECRETS = 'vlad2030'
 
 
 class Merchants(models.Model):
@@ -21,17 +30,21 @@ class Merchants(models.Model):
 class Payment(models.Model):
     """Обьект платежа"""
     WAIT_PAY = 'wait_pay'
+    WAIT_APPROVE = 'wait_approve'
+    APPROVED = 'approved'
+    DECLINED = 'declined'
+
     PAYMENT_STATUSES = (
         (WAIT_PAY, WAIT_PAY),
-        ('wait_approve', 'wait_approve'),
-        ('approved', 'approved'),
-        ('not_approved', 'not_approved')
+        (WAIT_APPROVE, WAIT_APPROVE),
+        (APPROVED, APPROVED),
+        (DECLINED, DECLINED)
     )
-    """Заказ"""
     payment_id = models.AutoField(primary_key=True)
     merchant = models.ForeignKey(Merchants, on_delete=models.CASCADE)
     CURRENCIES = (
-        ('USD', 'UDS'),
+        (USD, USD,),
+        (RUB, RUB,),
     )
     order_id = models.CharField(max_length=50)
     customer = models.CharField(max_length=50)
@@ -48,27 +61,27 @@ class Payment(models.Model):
     expired = models.CharField(max_length=20, blank=True)
 
     def pay(self):
-        """Пометить платеж как оплаченый"""
-        self.status = 'wait_approve'
+        """Пометить платеж как оплаченый и ожидающий подтверждения"""
+        self.status = Payment.WAIT_APPROVE
         self.save()
 
     def approve(self):
         """Пометить платеж как подтвержденный"""
-        self.status = 'approved'
+        self.status = Payment.APPROVED
         self.save()
         self.send_payment_postback()
 
     def not_approve(self):
         """Пометить платеж как откланенный"""
-        self.status = 'not_approved'
+        self.status = Payment.DECLINED
         self.save()
         self.send_payment_postback()
 
     def send_payment_postback(self):
         """Отплавить постбэк пользователю о изменении статуса заказа"""
-        if self.status not in ('approved', 'not_approved'):
+        if self.status not in (Payment.APPROVED, Payment.DECLINED):
             raise ValueError('Cant send post back of not complete payment')
-        result = 'success' if self.status == 'approved' else 'error'
+        result = 'success' if self.status == Payment.APPROVED else 'error'
         data = {
             'order_id': self.order_id,
             'payment_id': self.payment_id,

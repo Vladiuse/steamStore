@@ -1,7 +1,5 @@
 from django.db import models
 from store.models import SteamPayReplenishment
-from django.core.validators import MaxValueValidator
-from nicepay.models import NicePay
 from uuid import uuid4
 from requests.exceptions import RequestException, HTTPError
 import requests as req
@@ -33,18 +31,18 @@ class Order(models.Model):
     def is_total_price_exceeded(self) -> bool:
         """Явзяеться ли сумма платежа досустимой в сситеме nicepay(USD)"""
         total_cost = self.get_total_cost()
-        return NicePay.MIN_ORDER_PRICE < total_cost < NicePay.MAX_ORDER_PRICE
+        return not NicePay.MIN_ORDER_PRICE < total_cost < NicePay.MAX_ORDER_PRICE
 
     def create_pay_link(self):
         """Создать платежную ссылку в nicepay"""
         data = {
-            'merchant_id': 'vlad',
-            'secret': 'vlad2030',
+            'merchant_id': NicePay.MERCHANT_ID,
+            'secret': NicePay.SECRETS,
             'order_id': str(self.order_id),
             'customer': self.email,
             'amount': self.get_total_cost(),
             'method': 'post',
-            'currency': 'USD',
+            'currency': NicePay.CURRENCY,
         }
         print(data)
         try:
@@ -68,7 +66,7 @@ class Order(models.Model):
     def set_payment_status(self, status):
         """Изменить статус платежа заказа"""
         if status not in (Order.PAYED, Order.ERROR_PAY):
-            raise ValueError('Incorrect Order status')
+            raise ValueError('Incorrect Order status to send postback')
         self.status = status
         self.save()
 

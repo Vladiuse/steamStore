@@ -6,5 +6,7 @@ from rest_framework.reverse import reverse
 @api_view()
 def api_root(request, format=None):
     return Response({
-        'orders': reverse('orders_root', request=request,format=format),
+        'orders_app': reverse('orders_root', request=request,format=format),
+        'nice_pay_app': reverse('orders_root', request=request,format=format),
+        'store_app': reverse('store_root', request=request,format=format),
     })
