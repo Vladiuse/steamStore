@@ -12,6 +12,7 @@ class SteamPayReplenishment(models.Model):
     )
     id = models.CharField(primary_key=True, max_length=10, editable=False)
     amount = models.PositiveIntegerField(choices=ReplenishmentAmounts, unique=True)
+    available = models.BooleanField(default=True, verbose_name='Есть в наличии')
 
     def save(self, **kwargs):
         if not self.pk:
