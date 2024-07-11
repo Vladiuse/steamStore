@@ -12,13 +12,18 @@ class SteamPayReplenishment(models.Model):
         (100, 100),
     )
     id = models.CharField(primary_key=True, max_length=10, editable=False)
-    amount = models.PositiveIntegerField(choices=ReplenishmentAmounts, unique=True)
+    replenishment = models.PositiveIntegerField(
+        choices=ReplenishmentAmounts,
+        unique=True,
+        verbose_name='Сумма пополнения в USD',
+    )
+    amount = models.PositiveIntegerField(verbose_name='Стоимость в рублях')
     available = models.BooleanField(default=True, verbose_name='Есть в наличии')
 
     def save(self, **kwargs):
         # создаеться кастомный первичный ключ на базе валюты и суммы купона
         if not self.pk:
-            self.pk = str(self.amount) + '-' + USD
+            self.pk = str(self.replenishment) + '-' + USD
         super().save(**kwargs)
 
 
