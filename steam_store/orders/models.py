@@ -4,6 +4,7 @@ from uuid import uuid4
 from requests.exceptions import RequestException, HTTPError
 import requests as req
 from nicepay.models import NicePay
+from django.core.validators import MinValueValidator
 
 
 class Order(models.Model):
@@ -12,22 +13,21 @@ class Order(models.Model):
     PAYED = 'payed'
     ERROR_PAY = 'pay_error'
     STATUSES = (
-        (NOT_PAYED,NOT_PAYED),
-        (PAYED,PAYED),
-        (ERROR_PAY,ERROR_PAY),
+        (NOT_PAYED, NOT_PAYED),
+        (PAYED, PAYED),
+        (ERROR_PAY, ERROR_PAY),
     )
-
 
     order_id = models.UUIDField(primary_key=True, default=uuid4)
     email = models.EmailField()
     phone_number = models.CharField(max_length=15)
     status = models.CharField(max_length=10, default=NOT_PAYED)
     created = models.DateTimeField(auto_now_add=True)
+    payment_request= models.JSONField(blank=True, default=None)
 
-    def get_total_cost(self):
+    def get_total_cost(self) -> int:
         """Получить полную стоимость заказа"""
         return sum(item.get_cost() for item in self.items.all())
-
 
     def create_pay_link(self):
         """Создать платежную ссылку в nicepay"""
@@ -40,13 +40,12 @@ class Order(models.Model):
             'method': 'post',
             'currency': NicePay.CURRENCY,
         }
-        print(data)
         try:
             res = req.post(NicePay.PAY_URL, json=data)
             res.raise_for_status()
             res_data = res.json()
             if res_data['status'] == 'success':
-                order_payment = OrderPayment.objects.create(order=self,**res_data['data'])
+                order_payment = OrderPayment.objects.create(order=self, **res_data['data'])
                 return order_payment
             else:
                 return res_data
@@ -59,13 +58,12 @@ class Order(models.Model):
                 'data': f'RequestException {error}'
             }
 
-    def set_payment_status(self, status):
+    def set_payment_status(self, status:str) -> None:
         """Изменить статус платежа заказа"""
         if status not in (Order.PAYED, Order.ERROR_PAY):
-            raise ValueError('Incorrect Order status to send postback')
+            raise ValueError('Incorrect Order status ')
         self.status = status
         self.save()
-
 
 
 class OrderItem(models.Model):
@@ -73,10 +71,10 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(SteamPayReplenishment, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1,
-                                           # validators=[MaxValueValidator(10),],
+                                           validators=[MinValueValidator(1),],
                                            )
 
-    def get_cost(self):
+    def get_cost(self) -> int:
         """Получить стоимоть товарной позиции"""
         return self.product.amount * self.quantity
 
@@ -106,7 +104,7 @@ class OrderPaymentPostback(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
 
-    def save(self, **kwargs):
+    def save(self, **kwargs) -> None:
         super().save(**kwargs)
         # При сохранении изменить статус заказа в зависимости от полученого статуса от nicepay
         if self.result == 'success':

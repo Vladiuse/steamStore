@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="add some">
-      <change afterPath="$PROJECT_DIR$/steam_store/orders/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/steam_store/store/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/steam_store/store/tests/test_steam_position_model.py" afterDir="false" />
+    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="add test store">
+      <change afterPath="$PROJECT_DIR$/steam_store/orders/tests/test_order_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steam_store/nicepay/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/nicepay/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steam_store/store/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/store/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steam_store/store/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/store/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/orders/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/orders/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +94,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720703612509</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add test store">
+      <option name="closed" value="true" />
+      <created>1720709093697</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1720709093697</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -106,6 +110,7 @@
     <MESSAGE value="add some comments" />
     <MESSAGE value="add field replenishment in SteamPosition" />
     <MESSAGE value="add some" />
-    <option name="LAST_COMMIT_MESSAGE" value="add some" />
+    <MESSAGE value="add test store" />
+    <option name="LAST_COMMIT_MESSAGE" value="add test store" />
   </component>
 </project>
