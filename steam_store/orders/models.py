@@ -19,23 +19,31 @@ class Order(models.Model):
     )
 
     order_id = models.UUIDField(primary_key=True, default=uuid4)
-    email = models.EmailField()
+    email = models.EmailField(max_length=34)
     phone_number = models.CharField(max_length=15)
     status = models.CharField(max_length=10, default=NOT_PAYED)
     created = models.DateTimeField(auto_now_add=True)
-    payment_request= models.JSONField(blank=True, default=None)
+    error_payment_request = models.JSONField(blank=True, default=None)
 
     def get_total_cost(self) -> int:
         """Получить полную стоимость заказа"""
         return sum(item.get_cost() for item in self.items.all())
 
-    def create_pay_link(self):
+    @property
+    def customer_info(self):
+        info = f'{self.email}:{self.phone_number}'
+        if len(info) > 50:
+            info = self.email
+        return info
+
+    def create_pay_link(self) -> None:
         """Создать платежную ссылку в nicepay"""
+        error_data = None
         data = {
             'merchant_id': NicePay.MERCHANT_ID,
             'secret': NicePay.SECRETS,
             'order_id': str(self.order_id),
-            'customer': self.email,
+            'customer': self.customer_info,
             'amount': self.get_total_cost(),
             'method': 'post',
             'currency': NicePay.CURRENCY,
@@ -45,20 +53,28 @@ class Order(models.Model):
             res.raise_for_status()
             res_data = res.json()
             if res_data['status'] == 'success':
-                order_payment = OrderPayment.objects.create(order=self, **res_data['data'])
-                return order_payment
+                OrderPayment.objects.create(order=self, **res_data['data'])
             else:
-                return res_data
+                error_data = res_data
         except HTTPError as error:
-            print(res)
-            return res_data
-        except RequestException as error:
-            return {
+            error_data = {
                 'status': 'error',
-                'data': f'RequestException {error}'
+                'error_type': type(error),
+                'error_text': 'status code not 200',
+                'status_code': res.status_code,
+                'data': str(res.text),
             }
+        except RequestException as error:
+            error_data = {
+                'status': 'error',
+                'error_type': type(error),
+                'error_text': str(error),
+            }
+        if error_data:
+            self.payment_request = error_data
+            self.save()
 
-    def set_payment_status(self, status:str) -> None:
+    def set_payment_status(self, status: str) -> None:
         """Изменить статус платежа заказа"""
         if status not in (Order.PAYED, Order.ERROR_PAY):
             raise ValueError('Incorrect Order status ')
@@ -71,7 +87,7 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(SteamPayReplenishment, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1,
-                                           validators=[MinValueValidator(1),],
+                                           validators=[MinValueValidator(1), ],
                                            )
 
     def get_cost(self) -> int:

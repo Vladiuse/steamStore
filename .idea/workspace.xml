@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="add test store">
-      <change afterPath="$PROJECT_DIR$/steam_store/orders/tests/test_order_model.py" afterDir="false" />
+    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="add tests for order">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/steam_store/orders/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/orders/models.py" afterDir="false" />
     </list>
@@ -102,7 +101,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720709093697</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add tests for order">
+      <option name="closed" value="true" />
+      <created>1720717172640</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1720717172640</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -111,6 +118,7 @@
     <MESSAGE value="add field replenishment in SteamPosition" />
     <MESSAGE value="add some" />
     <MESSAGE value="add test store" />
-    <option name="LAST_COMMIT_MESSAGE" value="add test store" />
+    <MESSAGE value="add tests for order" />
+    <option name="LAST_COMMIT_MESSAGE" value="add tests for order" />
   </component>
 </project>
