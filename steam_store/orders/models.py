@@ -23,7 +23,11 @@ class Order(models.Model):
     phone_number = models.CharField(max_length=15)
     status = models.CharField(max_length=10, default=NOT_PAYED)
     created = models.DateTimeField(auto_now_add=True)
-    error_payment_request = models.JSONField(blank=True, default=None)
+    error_payment_request = models.JSONField(blank=True, default=None, null=True)
+    sendet_data = models.JSONField(blank=True, default=None, null=True)
+
+    def is_pay_link_created(self):
+        return bool(self.order_payment)
 
     def get_total_cost(self) -> int:
         """Получить полную стоимость заказа"""
@@ -48,6 +52,8 @@ class Order(models.Model):
             'method': 'post',
             'currency': NicePay.CURRENCY,
         }
+        self.sendet_data = data
+        self.save()
         try:
             res = req.post(NicePay.PAY_URL, json=data)
             res.raise_for_status()
@@ -57,9 +63,10 @@ class Order(models.Model):
             else:
                 error_data = res_data
         except HTTPError as error:
+            print('HTTPError')
             error_data = {
                 'status': 'error',
-                'error_type': type(error),
+                'error_type': str(type(error)),
                 'error_text': 'status code not 200',
                 'status_code': res.status_code,
                 'data': str(res.text),
@@ -67,11 +74,11 @@ class Order(models.Model):
         except RequestException as error:
             error_data = {
                 'status': 'error',
-                'error_type': type(error),
+                'error_type': str(type(error)),
                 'error_text': str(error),
             }
         if error_data:
-            self.payment_request = error_data
+            self.error_payment_request = error_data
             self.save()
 
     def set_payment_status(self, status: str) -> None:

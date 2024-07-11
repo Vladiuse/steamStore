@@ -1,6 +1,12 @@
 from rest_framework.routers import SimpleRouter
 from . import views
-router = SimpleRouter()
-router.register('payment', views.PaymentView)
+from django.urls import include, path
 
-urlpatterns = router.urls
+
+router = SimpleRouter()
+router.register('payment', views.PaymentView, basename='payment')
+
+urlpatterns = [
+    path('', views.nicepay_root, name='nicepay_root'),
+    path('', include(router.urls),),
+]

@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="add tests for order">
+    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="change func to create payment link">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/nicepay/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/nicepay/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/nicepay/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/nicepay/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/steam_store/orders/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/orders/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/steam_store/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/steam_store/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/x.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/x.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +48,74 @@
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.Python tests for test.ATest.test_mock.executor": "Run",
+    "Python tests.Python tests in test.py.executor": "Run",
+    "Python.x.executor": "Run"
+  }
+}]]></component>
+  <component name="RunManager" selected="Python tests.Python tests in test.py">
+    <configuration name="x" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="steamStore" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/steam_store" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/steam_store/x.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test.ATest.test_mock" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="steamStore" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/steam_store" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test.ATest.test_mock&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="steamStore" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/steam_store" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/steam_store/test.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests in test.py" />
+        <item itemvalue="Python tests.Python tests for test.ATest.test_mock" />
+        <item itemvalue="Python.x" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -109,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720717172640</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="change func to create payment link">
+      <option name="closed" value="true" />
+      <created>1720727919687</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1720727919687</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -119,6 +199,7 @@
     <MESSAGE value="add some" />
     <MESSAGE value="add test store" />
     <MESSAGE value="add tests for order" />
-    <option name="LAST_COMMIT_MESSAGE" value="add tests for order" />
+    <MESSAGE value="change func to create payment link" />
+    <option name="LAST_COMMIT_MESSAGE" value="change func to create payment link" />
   </component>
 </project>

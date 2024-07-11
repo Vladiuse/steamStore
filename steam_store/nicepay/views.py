@@ -6,10 +6,14 @@ from .serializers import PayMentSerializer, PayMentCreateSerializer, PaymentLink
 from .models import Payment
 from rest_framework.response import Response
 from rest_framework.decorators import action
+from rest_framework.reverse import reverse
 
 
-
-
+@api_view()
+def nicepay_root(request, format=None):
+    return Response({
+        'payments': reverse(viewname='payment-list', request=request, format=format),
+    })
 class PaymentView(ModelViewSet):
     queryset = Payment.objects.all()
 

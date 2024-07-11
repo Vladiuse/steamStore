@@ -1,6 +1,11 @@
 import requests as req
 from pprint import pprint
 
+class A:
+
+    def get(self):
+        res = req.get('https://google.com')
+        return res
 
 def create_order():
     data = {
@@ -54,4 +59,4 @@ def send_postback():
     print(res.json())
 
 
-create_order()
+# create_order()
