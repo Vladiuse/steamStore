@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Order, OrderItem, OrderPayment, OrderPaymentPostback
 from store.serializers import SteamPayReplenishmentSerializer
+from nicepay.models import NicePay
 
 
 class OrderPaymentSerializer(serializers.ModelSerializer):
@@ -35,9 +36,10 @@ class OrderSerializer(serializers.ModelSerializer):
         order = Order.objects.create(**validated_data)
         order_items_models = [OrderItem(order=order, **order_item) for order_item in order_items]
         OrderItem.objects.bulk_create(order_items_models)
-        if order.is_total_price_exceeded():
+        if NicePay.is_total_price_exceeded(amount=order.get_total_cost()):
             order.delete()
-            raise serializers.ValidationError('Maximum order amount exceeded (990$)')
+            limits = NicePay.get_limits()
+            raise serializers.ValidationError(f'Incorrect amount, must be in ({limits["min"]}, {limits["max"]})')
         order.create_pay_link()
         return order
 

@@ -7,7 +7,7 @@ RUB = 'RUB'
 
 
 class NicePay:
-    CURRENCY = USD
+    CURRENCY = RUB
     LIMITS = {
         USD: {'min': 10, 'max': 990},
         RUB: {'min': 200, 'max': 85000},
@@ -17,6 +17,21 @@ class NicePay:
     PAY_URL = 'http://127.0.0.1:8000/nicepay/payment/'
     MERCHANT_ID = 'vlad'
     SECRETS = 'vlad2030'
+
+
+    @staticmethod
+    def is_total_price_exceeded( amount: int) -> bool:
+        currency = NicePay.CURRENCY
+        """Явзяеться ли сумма платежа досустимой в сситеме nicepay(USD)"""
+        min_val, max_val = NicePay.LIMITS[currency]['min'], NicePay.LIMITS[currency]['max']
+        return not min_val < amount < max_val
+
+
+    @staticmethod
+    def get_limits(currency=None):
+        if not currency:
+            currency = NicePay.CURRENCY
+        return NicePay.LIMITS[currency]
 
 
 class Merchants(models.Model):

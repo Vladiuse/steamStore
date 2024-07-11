@@ -28,10 +28,6 @@ class Order(models.Model):
         """Получить полную стоимость заказа"""
         return sum(item.get_cost() for item in self.items.all())
 
-    def is_total_price_exceeded(self) -> bool:
-        """Явзяеться ли сумма платежа досустимой в сситеме nicepay(USD)"""
-        total_cost = self.get_total_cost()
-        return not NicePay.MIN_ORDER_PRICE < total_cost < NicePay.MAX_ORDER_PRICE
 
     def create_pay_link(self):
         """Создать платежную ссылку в nicepay"""

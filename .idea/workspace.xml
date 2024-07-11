@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="add some comments">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steam_store/store/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/store/models.py" afterDir="false" />
+    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="add field replenishment in SteamPosition">
+      <change beforePath="$PROJECT_DIR$/steam_store/nicepay/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/nicepay/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/orders/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/orders/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/orders/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/orders/serializers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,12 +59,21 @@
       <option name="presentableId" value="Default" />
       <updated>1720701295738</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add field replenishment in SteamPosition">
+      <option name="closed" value="true" />
+      <created>1720701939937</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720701939937</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add field available in StemPayCoupon" />
     <MESSAGE value="add some comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="add some comments" />
+    <MESSAGE value="add field replenishment in SteamPosition" />
+    <option name="LAST_COMMIT_MESSAGE" value="add field replenishment in SteamPosition" />
   </component>
 </project>
