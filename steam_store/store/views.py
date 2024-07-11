@@ -13,9 +13,10 @@ def store_root(request, format=None):
         'items': reverse(viewname='item-list', request=request, format=format),
         'steam_codes': reverse(viewname='steam-code-list', request=request, format=format),
     })
+
 class SteamPayReplenishmentView(ModelViewSet):
     serializer_class = SteamPayReplenishmentSerializer
-    queryset = SteamPayReplenishment.objects.all()
+    queryset = SteamPayReplenishment.available.all()
 
 
 class SteamPayReplenishmentCodeView(ModelViewSet):

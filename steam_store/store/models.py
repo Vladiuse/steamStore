@@ -2,7 +2,15 @@ from django.db import models
 
 USD = 'usd'
 
+
+class SteamPayReplenishmentAvailableManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(_available=True)
+
+
 class SteamPayReplenishment(models.Model):
+    objects = models.Manager()
+    available = SteamPayReplenishmentAvailableManager()
     """Типы купонов на пополнения баланса в стим"""
     ReplenishmentAmounts = (
         (10, 10),
@@ -18,7 +26,7 @@ class SteamPayReplenishment(models.Model):
         verbose_name='Сумма пополнения в USD',
     )
     amount = models.PositiveIntegerField(verbose_name='Стоимость в рублях')
-    available = models.BooleanField(default=True, verbose_name='Есть в наличии')
+    _available = models.BooleanField(default=True, verbose_name='Есть в наличии')
 
     def save(self, **kwargs):
         # создаеться кастомный первичный ключ на базе валюты и суммы купона

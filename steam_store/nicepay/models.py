@@ -12,8 +12,6 @@ class NicePay:
         USD: {'min': 10, 'max': 990},
         RUB: {'min': 200, 'max': 85000},
     }
-    MIN_ORDER_PRICE = 10
-    MAX_ORDER_PRICE = 990
     PAY_URL = 'http://127.0.0.1:8000/nicepay/payment/'
     MERCHANT_ID = 'vlad'
     SECRETS = 'vlad2030'
