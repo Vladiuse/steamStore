@@ -44,8 +44,9 @@ CORS_ALLOWED_ORIGINS = [
     'https://moysteam.ru',
 ]
 
-CSRF_TRUSTED_ORIGINS = ALLOWED_HOSTS
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://infinity-sub.ru',
+]
 # Application definition
 
 INSTALLED_APPS = [
