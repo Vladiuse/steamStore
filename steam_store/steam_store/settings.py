@@ -37,7 +37,7 @@ SECRET_KEY = SECRETS['django-secret-key']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['31.128.41.230','localhost', '127.0.0.1', 'api.moysteam.ru']
+ALLOWED_HOSTS = ['31.128.41.230','localhost', '127.0.0.1', 'api.moysteam.ru', 'infinity-sub.ru']
 
 CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:5500',
