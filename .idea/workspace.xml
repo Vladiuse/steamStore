@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="remove sending pay method&#10;add some tests">
+    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="add host">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/steam_store/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/steam_store/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720789928031</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add host">
+      <option name="closed" value="true" />
+      <created>1720791005958</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1720791005958</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -230,6 +239,7 @@
     <MESSAGE value="change func to create payment link" />
     <MESSAGE value="ass some" />
     <MESSAGE value="remove sending pay method&#10;add some tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove sending pay method&#10;add some tests" />
+    <MESSAGE value="add host" />
+    <option name="LAST_COMMIT_MESSAGE" value="add host" />
   </component>
 </project>
