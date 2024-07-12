@@ -1,5 +1,6 @@
 from django.db import models
 import requests as req
+from django.conf import settings
 
 
 USD = 'USD'
@@ -16,13 +17,17 @@ class NicePay:
     MERCHANT_ID = 'vlad'
     SECRETS = 'vlad2030'
 
+    # PAY_URL = 'https://nicepay.io/public/api/payment'
+    # MERCHANT_ID = settings.SECRETS['MERCHANT_ID']
+    # SECRETS = settings.SECRETS['SECRETS']
+
 
     @staticmethod
     def is_total_price_exceeded( amount: int) -> bool:
         currency = NicePay.CURRENCY
         """Явзяеться ли сумма платежа досустимой в сситеме nicepay(USD)"""
         min_val, max_val = NicePay.LIMITS[currency]['min'], NicePay.LIMITS[currency]['max']
-        return not min_val < amount < max_val
+        return not min_val <= amount <= max_val
 
 
     @staticmethod

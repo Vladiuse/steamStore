@@ -89,3 +89,10 @@ class OrderTest(TestCase):
         order = Order.objects.create(email='some@some.com', phone_number='123123123')
         order.set_payment_status(status=Order.PAYED)
         self.assertEqual(order.status, Order.PAYED)
+
+    def test_get_customer_info(self):
+        order = Order.objects.create(email='some@some.com', phone_number='+1234567890')
+        self.assertEqual(order.customer_info, 'some@some.com:+1234567890')
+
+
+

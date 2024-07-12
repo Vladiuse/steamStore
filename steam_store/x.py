@@ -12,8 +12,8 @@ def create_order():
         'email': 'some@some.email',
         'phone_number': '123123123123',
         'order_items': [
-            {'product': '10-usd', 'quantity': 10},
-            {'product': '20-usd', 'quantity': 5},
+            {'product': '777-usd', 'quantity': 1},
+            # {'product': '20-usd', 'quantity': 5},
         ]
         # 'order_items': 1,
     }
@@ -59,4 +59,4 @@ def send_postback():
     print(res.json())
 
 
-# create_order()
+create_order()

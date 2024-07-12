@@ -40,18 +40,23 @@ class Order(models.Model):
             info = self.email
         return info
 
-    def create_pay_link(self) -> None:
-        """Создать платежную ссылку в nicepay"""
-        error_data = None
+    def get_data_for_payment_link(self) -> dict:
+        """данные для отправики чтоб создать платежную ссылку"""
         data = {
             'merchant_id': NicePay.MERCHANT_ID,
             'secret': NicePay.SECRETS,
             'order_id': str(self.order_id),
             'customer': self.customer_info,
-            'amount': self.get_total_cost(),
-            'method': 'post',
+            'amount': self.get_total_cost() * 100,
+            # 'method': 'post',
             'currency': NicePay.CURRENCY,
         }
+        return data
+
+    def create_pay_link(self) -> None:
+        """Создать платежную ссылку в nicepay"""
+        error_data = None
+        data = self.get_data_for_payment_link()
         self.sendet_data = data
         self.save()
         try:

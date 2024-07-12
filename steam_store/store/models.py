@@ -13,6 +13,7 @@ class SteamPayReplenishment(models.Model):
     available = SteamPayReplenishmentAvailableManager()
     """Типы купонов на пополнения баланса в стим"""
     ReplenishmentAmounts = (
+        (777,777),
         (10, 10),
         (20, 20),
         (50, 50),
