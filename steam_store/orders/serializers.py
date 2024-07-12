@@ -57,3 +57,9 @@ class OrderSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Empty order items')
 
 
+class PublicOrderSerializer(OrderSerializer):
+    postbacks = None
+    class Meta():
+        model = Order
+        exclude = ('sendet_data',)
+
