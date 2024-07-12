@@ -44,6 +44,7 @@ CORS_ALLOWED_ORIGINS = [
     'https://moysteam.ru',
 ]
 
+CSRF_TRUSTED_ORIGINS = ALLOWED_HOSTS
 
 # Application definition
 
