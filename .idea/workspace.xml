@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="add host">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="add loalhost to settings">
       <change beforePath="$PROJECT_DIR$/steam_store/steam_store/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/steam_store/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -226,7 +225,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720791005958</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add loalhost to settings">
+      <option name="closed" value="true" />
+      <created>1720793256381</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1720793256381</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -240,6 +247,7 @@
     <MESSAGE value="ass some" />
     <MESSAGE value="remove sending pay method&#10;add some tests" />
     <MESSAGE value="add host" />
-    <option name="LAST_COMMIT_MESSAGE" value="add host" />
+    <MESSAGE value="add loalhost to settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="add loalhost to settings" />
   </component>
 </project>
