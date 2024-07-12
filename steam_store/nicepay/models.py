@@ -66,12 +66,12 @@ class Payment(models.Model):
     )
     order_id = models.CharField(max_length=50)
     customer = models.CharField(max_length=50)
-    amount = models.DecimalField(
-        max_digits=7, decimal_places=2,
+    amount = models.PositiveIntegerField(
+
     )
     currency = models.CharField(max_length=3, choices=CURRENCIES)
     description = models.TextField(blank=True)
-    method = models.CharField(max_length=50)
+    method = models.CharField(max_length=50, blank=True)
     success_url = models.URLField(blank=True)
     fail_url = models.URLField(blank=True)
     created = models.DateTimeField(auto_now_add=True)

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="add loalhost to settings">
+    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="fix path of secrets">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/nicepay/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/nicepay/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/nicepay/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/nicepay/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/nicepay/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/nicepay/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/steam_store/steam_store/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/steam_store/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,15 +48,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python tests.Python tests for test.ATest.test_mock.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test.ATest.test_two.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python.x.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.Python tests for test.ATest.test_mock.executor": "Run",
+    "Python tests.Python tests for test.ATest.test_two.executor": "Run",
+    "Python tests.Python tests in test.py.executor": "Run",
+    "Python.test.executor": "Run",
+    "Python.x.executor": "Run"
   }
-}</component>
-  <component name="RunManager" selected="Python tests.Python tests in test.py">
+}]]></component>
+  <component name="RunManager" selected="Python.test">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="steamStore" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/steam_store" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/steam_store/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="x" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="steamStore" />
       <option name="ENV_FILES" value="" />
@@ -122,6 +149,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test" />
         <item itemvalue="Python tests.Python tests in test.py" />
         <item itemvalue="Python tests.Python tests for test.ATest.test_mock" />
         <item itemvalue="Python tests.Python tests for test.ATest.test_two" />
@@ -233,7 +261,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720793256381</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add statis">
+      <option name="closed" value="true" />
+      <created>1720795282630</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1720795282630</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix path of secrets">
+      <option name="closed" value="true" />
+      <created>1720795511657</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1720795511657</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -248,6 +292,8 @@
     <MESSAGE value="remove sending pay method&#10;add some tests" />
     <MESSAGE value="add host" />
     <MESSAGE value="add loalhost to settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="add loalhost to settings" />
+    <MESSAGE value="add statis" />
+    <MESSAGE value="fix path of secrets" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix path of secrets" />
   </component>
 </project>

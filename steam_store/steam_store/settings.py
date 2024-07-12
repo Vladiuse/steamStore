@@ -37,7 +37,12 @@ SECRET_KEY = SECRETS['django-secret-key']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['31.128.41.230','localhost']
+ALLOWED_HOSTS = ['31.128.41.230','localhost', '127.0.0.1']
+
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:5500',
+    'https://moysteam.ru',
+]
 
 
 # Application definition
@@ -52,6 +57,7 @@ INSTALLED_APPS = [
 
     'django_extensions',
     'rest_framework',
+    "corsheaders",
     #apps
     'store.apps.StoreConfig',
     'orders.apps.OrdersConfig',
@@ -60,6 +66,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

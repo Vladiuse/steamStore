@@ -1,21 +1,37 @@
-from django.shortcuts import render
-from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from rest_framework.viewsets import ModelViewSet
 from .serializers import PayMentSerializer, PayMentCreateSerializer, PaymentLinkSerializer
-from .models import Payment
+from .models import Payment, NicePay
 from rest_framework.response import Response
-from rest_framework.decorators import action
+from rest_framework.decorators import action, permission_classes
 from rest_framework.reverse import reverse
+from rest_framework.permissions import IsAuthenticated
 
 
 @api_view()
+@permission_classes([IsAuthenticated,])
 def nicepay_root(request, format=None):
     return Response({
         'payments': reverse(viewname='payment-list', request=request, format=format),
+        'nicepay_vars': reverse(viewname='nicepay_vars', request=request, format=format),
     })
+
+@api_view()
+@permission_classes([IsAuthenticated,])
+def nicepay_vars(request, format=None):
+    data = {
+        'CURRENCY': NicePay.CURRENCY,
+        'PAY_URL': NicePay.PAY_URL,
+        'MERCHANT_ID': NicePay.MERCHANT_ID,
+        'SECRETS': NicePay.SECRETS,
+
+    }
+    return Response(data)
+
+
 class PaymentView(ModelViewSet):
     queryset = Payment.objects.all()
+    permission_classes = [IsAuthenticated,]
 
     def get_serializer_class(self):
         if self.action == 'create':
