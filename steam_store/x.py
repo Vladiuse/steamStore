@@ -19,7 +19,7 @@ def create_order(add_account=False):
         # 'order_items': 1,
     }
     if add_account:
-        data.update({'buy_account': 'steam_account',})
+        data.update({'buy_account': 'steam_account1',})
     res = req.post('http://127.0.0.1:8000/orders/orders/', json=data)
     print(res.status_code)
     print(res.json())
@@ -61,4 +61,4 @@ def send_postback():
     print(res.json())
 
 
-create_order()
+create_order(add_account=True)

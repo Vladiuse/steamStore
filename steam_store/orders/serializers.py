@@ -36,7 +36,7 @@ class OrderSerializer(serializers.ModelSerializer):
         order = Order.objects.create(**validated_data)
         order_items_models = [OrderItem(order=order, **order_item) for order_item in order_items]
         OrderItem.objects.bulk_create(order_items_models)
-        if NicePay.is_total_price_exceeded(amount=order.get_total_cost()):
+        if NicePay.is_total_price_exceeded(amount=order.get_total_cost() * 100):
             order.delete()
             limits = NicePay.get_limits()
             raise serializers.ValidationError(f'Incorrect amount, must be in ({limits["min"]}, {limits["max"]})')

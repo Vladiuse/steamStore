@@ -73,7 +73,7 @@ class OrderTest(TestCase):
         self.assertEqual(order.get_total_cost(), 1 * 10 + 2 * 20)
 
     def test_order_with_account(self):
-        account = SteamAccount.objects.create(price=100)
+        account = SteamAccount.objects.create(price=10)
         order = Order.objects.create(email='some@some.com', phone_number='123123123', buy_account=account)
         OrderItem.objects.create(
             order=order,
@@ -85,7 +85,7 @@ class OrderTest(TestCase):
             product=self.product_2,
             quantity=2,
         )
-        self.assertEqual(order.get_total_cost(), 1 * 10 + 2 * 20 + 100)
+        self.assertEqual(order.get_total_cost(), 1 * 10 + 2 * 20 + account.price)
 
     def test_order_no_account(self):
 

@@ -11,7 +11,7 @@ class NicePay:
     CURRENCY = RUB
     LIMITS = {
         USD: {'min': 10, 'max': 990},
-        RUB: {'min': 200, 'max': 85000},
+        RUB: {'min': 100, 'max': 85000},
     }
     PAY_URL = 'http://127.0.0.1:8000/nicepay/payment/'
     MERCHANT_ID = 'vlad'
@@ -27,7 +27,7 @@ class NicePay:
         currency = NicePay.CURRENCY
         """Явзяеться ли сумма платежа досустимой в сситеме nicepay(USD)"""
         min_val, max_val = NicePay.LIMITS[currency]['min'], NicePay.LIMITS[currency]['max']
-        return not min_val <= amount <= max_val
+        return not min_val * 100 <= amount <= max_val * 100
 
 
     @staticmethod
