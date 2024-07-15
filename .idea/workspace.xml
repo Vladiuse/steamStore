@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="add steam account models&#10;add steam account in order&#10;fix tests">
+    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="add SteamAccount V">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steam_store/store/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/store/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steam_store/store/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/store/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steam_store/store/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/store/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steam_store/store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/store/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steam_store/store/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/store/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/nicepay/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/nicepay/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/orders/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/orders/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/x.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/x.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +56,7 @@
     &quot;Python.x.executor&quot;: &quot;Run&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.x">
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="steamStore" />
       <option name="ENV_FILES" value="" />
@@ -150,11 +148,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.x" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python tests.Python tests in test.py" />
         <item itemvalue="Python tests.Python tests for test.ATest.test_mock" />
         <item itemvalue="Python tests.Python tests for test.ATest.test_two" />
-        <item itemvalue="Python.x" />
       </list>
     </recent_temporary>
   </component>
@@ -350,7 +348,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721055247532</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="add SteamAccount V">
+      <option name="closed" value="true" />
+      <created>1721056169433</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1721056169433</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -373,6 +379,7 @@
     <MESSAGE value="add CSRF_TRUSTED_ORIGINS" />
     <MESSAGE value="add scripts" />
     <MESSAGE value="add steam account models&#10;add steam account in order&#10;fix tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="add steam account models&#10;add steam account in order&#10;fix tests" />
+    <MESSAGE value="add SteamAccount V" />
+    <option name="LAST_COMMIT_MESSAGE" value="add SteamAccount V" />
   </component>
 </project>

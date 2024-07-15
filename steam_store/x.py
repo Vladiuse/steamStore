@@ -7,17 +7,19 @@ class A:
         res = req.get('https://google.com')
         return res
 
-def create_order():
+def create_order(add_account=False):
     data = {
         'email': 'some@some.email',
         'phone_number': '123123123123',
         'order_items': [
             {'product': '777-usd', 'quantity': 1},
             # {'product': '20-usd', 'quantity': 5},
-        ]
+        ],
+
         # 'order_items': 1,
     }
-
+    if add_account:
+        data.update({'buy_account': 'steam_account',})
     res = req.post('http://127.0.0.1:8000/orders/orders/', json=data)
     print(res.status_code)
     print(res.json())

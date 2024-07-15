@@ -132,7 +132,7 @@ class OrderPaymentPostback(models.Model):
     amount_currency = models.CharField(max_length=100)
     profit = models.CharField(max_length=100)
     profit_currency = models.CharField(max_length=100)
-    method = models.CharField(max_length=100)
+    method = models.CharField(max_length=100, blank=True)
     hash = models.CharField(max_length=100)
 
     created = models.DateTimeField(auto_now_add=True)

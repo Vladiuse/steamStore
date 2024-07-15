@@ -31,13 +31,20 @@ def nicepay_vars(request, format=None):
 
 class PaymentView(ModelViewSet):
     queryset = Payment.objects.all()
-    permission_classes = [IsAuthenticated,]
+
 
     def get_serializer_class(self):
         if self.action == 'create':
             return PayMentCreateSerializer
         else:
             return PayMentSerializer
+
+    def get_permissions(self):
+        if self.action == 'list':
+            self.permission_classes = [IsAuthenticated(), ]
+        else:
+            self.permission_classes = []
+        return self.permission_classes
 
 
     def create(self, request, *args, **kwargs):
