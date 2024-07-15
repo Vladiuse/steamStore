@@ -13,13 +13,13 @@ class NicePay:
         USD: {'min': 10, 'max': 990},
         RUB: {'min': 100, 'max': 85000},
     }
-    PAY_URL = 'http://127.0.0.1:8000/nicepay/payment/'
-    MERCHANT_ID = 'vlad'
-    SECRETS = 'vlad2030'
+    # PAY_URL = 'http://127.0.0.1:8000/nicepay/payment/'
+    # MERCHANT_ID = 'vlad'
+    # SECRETS = 'vlad2030'
 
-    # PAY_URL = 'https://nicepay.io/public/api/payment'
-    # MERCHANT_ID = settings.SECRETS['MERCHANT_ID']
-    # SECRETS = settings.SECRETS['SECRETS']
+    PAY_URL = 'https://nicepay.io/public/api/payment'
+    MERCHANT_ID = settings.SECRETS['MERCHANT_ID']
+    SECRETS = settings.SECRETS['SECRETS']
 
 
     @staticmethod

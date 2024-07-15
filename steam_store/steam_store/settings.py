@@ -42,10 +42,12 @@ ALLOWED_HOSTS = ['31.128.41.230','localhost', '127.0.0.1', 'api.moysteam.ru', 'i
 CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:5500',
     'https://moysteam.ru',
+    'https://nicepay.io',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://infinity-sub.ru',
+    'https://nicepay.io',
 ]
 # Application definition
 
