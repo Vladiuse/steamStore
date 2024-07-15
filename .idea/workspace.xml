@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="add CSRF_TRUSTED_ORIGINS" />
+    <list default="true" id="8b7fd3e5-7720-402a-a324-6a283e01f40a" name="Changes" comment="add scripts">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/orders/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/orders/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/orders/tests/test_order_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/orders/tests/test_order_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_store/store/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_store/store/models.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,15 +47,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests for test.ATest.test_mock.executor": "Run",
-    "Python tests.Python tests for test.ATest.test_two.executor": "Run",
-    "Python tests.Python tests in test.py.executor": "Run",
-    "Python.test.executor": "Run",
-    "Python.x.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests for test.ATest.test_mock.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test.ATest.test_two.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.x.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.test">
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="steamStore" />
@@ -327,7 +332,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720816617828</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="add scripts">
+      <option name="closed" value="true" />
+      <created>1720816790337</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1720816790337</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -348,6 +361,7 @@
     <MESSAGE value="add reqs" />
     <MESSAGE value="add host" />
     <MESSAGE value="add CSRF_TRUSTED_ORIGINS" />
-    <option name="LAST_COMMIT_MESSAGE" value="add CSRF_TRUSTED_ORIGINS" />
+    <MESSAGE value="add scripts" />
+    <option name="LAST_COMMIT_MESSAGE" value="add scripts" />
   </component>
 </project>

@@ -1,6 +1,6 @@
 from orders.models import Order, OrderItem
 from django.test import TestCase
-from store.models import SteamPayReplenishment
+from store.models import SteamPayReplenishment, SteamAccount
 from django.core.exceptions import ValidationError
 
 
@@ -60,6 +60,36 @@ class OrderTest(TestCase):
 
     def test_order_cost_few_items(self):
         order = Order.objects.create(email='some@some.com', phone_number='123123123')
+        OrderItem.objects.create(
+            order=order,
+            product=self.product_1,
+            quantity=1,
+        )
+        OrderItem.objects.create(
+            order=order,
+            product=self.product_2,
+            quantity=2,
+        )
+        self.assertEqual(order.get_total_cost(), 1 * 10 + 2 * 20)
+
+    def test_order_with_account(self):
+        account = SteamAccount.objects.create(price=100)
+        order = Order.objects.create(email='some@some.com', phone_number='123123123', buy_account=account)
+        OrderItem.objects.create(
+            order=order,
+            product=self.product_1,
+            quantity=1,
+        )
+        OrderItem.objects.create(
+            order=order,
+            product=self.product_2,
+            quantity=2,
+        )
+        self.assertEqual(order.get_total_cost(), 1 * 10 + 2 * 20 + 100)
+
+    def test_order_no_account(self):
+
+        order = Order.objects.create(email='some@some.com', phone_number='123123123', buy_account=None)
         OrderItem.objects.create(
             order=order,
             product=self.product_1,

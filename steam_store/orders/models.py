@@ -1,5 +1,5 @@
 from django.db import models
-from store.models import SteamPayReplenishment
+from store.models import SteamPayReplenishment, SteamAccount
 from uuid import uuid4
 from requests.exceptions import RequestException, HTTPError
 import requests as req
@@ -25,13 +25,17 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     error_payment_request = models.JSONField(blank=True, default=None, null=True)
     sendet_data = models.JSONField(blank=True, default=None, null=True)
+    buy_account = models.ForeignKey(to=SteamAccount, on_delete=models.PROTECT, blank=True, null=True)
 
     def is_pay_link_created(self):
         return bool(self.order_payment)
 
     def get_total_cost(self) -> int:
         """Получить полную стоимость заказа"""
-        return sum(item.get_cost() for item in self.items.all())
+        items_cost = sum(item.get_cost() for item in self.items.all())
+        if self.buy_account:
+            items_cost += self.buy_account.price
+        return items_cost
 
     @property
     def customer_info(self):
@@ -101,6 +105,7 @@ class OrderItem(models.Model):
     quantity = models.PositiveIntegerField(default=1,
                                            validators=[MinValueValidator(1), ],
                                            )
+
 
     def get_cost(self) -> int:
         """Получить стоимоть товарной позиции"""

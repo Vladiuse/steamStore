@@ -8,6 +8,9 @@ class SteamPayReplenishmentAvailableManager(models.Manager):
         return super().get_queryset().filter(_available=True)
 
 
+class SteamAccount(models.Model):
+    price = models.PositiveIntegerField(unique=True)
+
 class SteamPayReplenishment(models.Model):
     objects = models.Manager()
     available = SteamPayReplenishmentAvailableManager()
