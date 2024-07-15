@@ -5,7 +5,9 @@ router = SimpleRouter()
 router.register('items', views.SteamPayReplenishmentView, basename='item')
 router.register('steam-codes', views.SteamPayReplenishmentCodeView, basename='steam-code')
 
+
 urlpatterns = [
     path('', include(router.urls),),
     path('', views.store_root, name='store_root'),
+    path('steam-accounts',  views.SteamAccountListView.as_view() , name='steam-account-list')
 ]

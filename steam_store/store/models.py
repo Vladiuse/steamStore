@@ -9,7 +9,10 @@ class SteamPayReplenishmentAvailableManager(models.Manager):
 
 
 class SteamAccount(models.Model):
-    price = models.PositiveIntegerField(unique=True)
+    key = models.CharField(max_length=30, primary_key=True)
+    price = models.PositiveIntegerField()
+    description = models.TextField(blank=True)
+
 
 class SteamPayReplenishment(models.Model):
     objects = models.Manager()
